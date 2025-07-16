@@ -6,6 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "build:gh":  "ng build --configuration production --base-href '/Tanzanite-Skills-Academy/'",
+    "deploy:gh": "npx angular-cli-ghpages --dir=dist/tanzania_skills_academy",
     "test": "ng test",
     "serve:ssr:tanzania_skills_academy": "node dist/tanzania_skills_academy/server/server.mjs"
   },
@@ -40,6 +42,7 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
+    "angular-cli-ghpages": "^2.0.3",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

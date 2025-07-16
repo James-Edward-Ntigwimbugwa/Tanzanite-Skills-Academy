@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
-  imports :[ReactiveFormsModule, CommonModule]
 })
 export class ContactComponent implements OnInit {
   contactForm: FormGroup;
