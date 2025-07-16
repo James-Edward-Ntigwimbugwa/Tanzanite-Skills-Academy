@@ -8,7 +8,7 @@
       
       <div class="nav-menu" [class.active]="isMenuOpen">
         <a href="#" class="nav-link" (click)="scrollToSection('home')">Nyumbani</a>
-        <a href="#" class="nav-link" (click)="scrollToSection('services')">Huduma</a>
+        <a href="#" class="nav-link" (click)="onAnchorClick($event, 'services')">Huduma</a>
         <a href="#" class="nav-link" (click)="scrollToSection('contact')">Mawasiliano</a>
         <button class="btn btn-primary nav-cta" (click)="scrollToSection('contact')">
           Jisajili Sasa
