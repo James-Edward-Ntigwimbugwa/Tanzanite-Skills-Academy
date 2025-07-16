@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
   isMenuOpen = false;
+return: any;
 
   constructor() { }
 
@@ -24,4 +26,10 @@ export class HeaderComponent implements OnInit {
     }
     this.isMenuOpen = false;
   }
+
+  onAnchorClick(evt: MouseEvent, sectionId: string) {
+  evt.preventDefault();           
+  this.scrollToSection(sectionId); 
+  }
+
 }

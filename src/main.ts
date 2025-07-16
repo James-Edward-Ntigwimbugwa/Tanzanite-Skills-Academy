@@ -1,6 +1,17 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { App } from './app/app.component';
+// src/main.ts
+import { bootstrapApplication }             from '@angular/platform-browser';
+import { importProvidersFrom }              from '@angular/core';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+import { AppComponent }                     from './app/app.component';
+import { BrowserModule }                    from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(
+      BrowserModule,
+      FormsModule,
+      ReactiveFormsModule
+    )
+  ]
+}).catch(err => console.error(err));
