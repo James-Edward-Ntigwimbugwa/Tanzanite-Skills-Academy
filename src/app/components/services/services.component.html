@@ -1,0 +1,36 @@
+<section id="services" class="services">
+  <div class="services-container">
+    <div class="services-header">
+      <h2 class="services-title">Huduma Zetu</h2>
+      <p class="services-subtitle">
+        Tunakuletea mafunzo ya hali ya juu katika maeneo muhimu ya maisha
+      </p>
+    </div>
+    
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services; let i = index" 
+           [style.animation-delay]="(i * 0.1) + 's'">
+        <div class="service-icon" [style.background-color]="service.color">
+          <i [class]="service.icon"></i>
+        </div>
+        <h3 class="service-title">{{ service.title }}</h3>
+        <p class="service-description">{{ service.description }}</p>
+        <button class="service-btn" (click)="scrollToContact()">
+          <i class="fas fa-arrow-right"></i>
+          Jifunze Zaidi
+        </button>
+      </div>
+    </div>
+    
+    <div class="services-cta">
+      <div class="cta-content">
+        <h3>Uko Tayari Kuanza Safari Yako?</h3>
+        <p>Jiunge nasi leo na uanze kubadilisha maisha yako</p>
+        <button class="cta-btn" (click)="scrollToContact()">
+          <i class="fas fa-rocket"></i>
+          Anza Mafunzo
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

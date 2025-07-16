@@ -1,0 +1,25 @@
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <i class="fas fa-gem"></i>
+        <span>Tanzanite Skills Academy</span>
+      </div>
+      
+      <div class="nav-menu" [class.active]="isMenuOpen">
+        <a href="#" class="nav-link" (click)="scrollToSection('home')">Nyumbani</a>
+        <a href="#" class="nav-link" (click)="scrollToSection('services')">Huduma</a>
+        <a href="#" class="nav-link" (click)="scrollToSection('contact')">Mawasiliano</a>
+        <button class="btn btn-primary nav-cta" (click)="scrollToSection('contact')">
+          Jisajili Sasa
+        </button>
+      </div>
+      
+      <div class="nav-toggle" (click)="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+</header>

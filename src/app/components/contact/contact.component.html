@@ -1,0 +1,148 @@
+<section id="contact" class="contact">
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2 class="contact-title">Wasiliana Nasi</h2>
+      <p class="contact-subtitle">
+        Tuko tayari kukusaidia. Tuandikie au tupigie simu kwa maelezo zaidi.
+      </p>
+    </div>
+    
+    <div class="contact-content">
+      <div class="contact-info">
+        <h3>Maelezo ya Mawasiliano</h3>
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div class="info-details">
+            <h4>WhatsApp</h4>
+            <p>{{ contactInfo.whatsapp }}</p>
+            <button class="info-btn" (click)="openWhatsApp()">
+              <i class="fas fa-external-link-alt"></i>
+              Fungua WhatsApp
+            </button>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="info-details">
+            <h4>Email</h4>
+            <p>{{ contactInfo.email }}</p>
+            <button class="info-btn" (click)="sendEmail()">
+              <i class="fas fa-external-link-alt"></i>
+              Tuma Email
+            </button>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="info-details">
+            <h4>Saa za Kufanya Kazi</h4>
+            <p>Jumatatu - Ijumaa: 8:00 - 17:00</p>
+            <p>Jumamosi: 9:00 - 15:00</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <h3>Tuma Ujumbe</h3>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Jina Kamili *</label>
+            <input 
+              type="text" 
+              id="name" 
+              formControlName="name"
+              [class.error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+              placeholder="Ingiza jina lako kamili">
+            <div class="error-message" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+              <span *ngIf="contactForm.get('name')?.errors?.['required']">Jina linahitajika</span>
+              <span *ngIf="contactForm.get('name')?.errors?.['minlength']">Jina liwe na herufi 2 au zaidi</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input 
+              type="email" 
+              id="email" 
+              formControlName="email"
+              [class.error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+              placeholder="mfano@email.com">
+            <div class="error-message" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+              <span *ngIf="contactForm.get('email')?.errors?.['required']">Email inahitajika</span>
+              <span *ngIf="contactForm.get('email')?.errors?.['email']">Ingiza email sahihi</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Namba ya Simu *</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              formControlName="phone"
+              [class.error]="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched"
+              placeholder="0700000000">
+            <div class="error-message" *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched">
+              <span *ngIf="contactForm.get('phone')?.errors?.['required']">Namba ya simu inahitajika</span>
+              <span *ngIf="contactForm.get('phone')?.errors?.['pattern']">Ingiza namba sahihi ya simu</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="service">Huduma Unayoipenda *</label>
+            <select 
+              id="service" 
+              formControlName="service"
+              [class.error]="contactForm.get('service')?.invalid && contactForm.get('service')?.touched">
+              <option value="">Chagua huduma</option>
+              <option value="personal-development">Maendeleo Binfasi</option>
+              <option value="finance-management">Usimamizi wa Fedha Binafsi</option>
+              <option value="career-development">Maendeleo ya Kitaaluma</option>
+              <option value="business-development">Maendeleo ya Biashara</option>
+              <option value="technology-development">Maendeleo ya Teknolojia</option>
+            </select>
+            <div class="error-message" *ngIf="contactForm.get('service')?.invalid && contactForm.get('service')?.touched">
+              <span *ngIf="contactForm.get('service')?.errors?.['required']">Chagua huduma</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Ujumbe *</label>
+            <textarea 
+              id="message" 
+              formControlName="message"
+              [class.error]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+              placeholder="Andika ujumbe wako hapa..."
+              rows="5"></textarea>
+            <div class="error-message" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+              <span *ngIf="contactForm.get('message')?.errors?.['required']">Ujumbe unahitajika</span>
+              <span *ngIf="contactForm.get('message')?.errors?.['minlength']">Ujumbe uwe na herufi 10 au zaidi</span>
+            </div>
+          </div>
+          
+          <button 
+            type="submit" 
+            class="submit-btn"
+            [disabled]="isSubmitting"
+            [class.loading]="isSubmitting">
+            <i class="fas fa-paper-plane" *ngIf="!isSubmitting"></i>
+            <i class="fas fa-spinner fa-spin" *ngIf="isSubmitting"></i>
+            {{ isSubmitting ? 'Inatuma...' : 'Tuma Ujumbe' }}
+          </button>
+          
+          <div class="success-message" *ngIf="submitMessage">
+            <i class="fas fa-check-circle"></i>
+            {{ submitMessage }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
